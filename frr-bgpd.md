@@ -95,3 +95,5 @@ core_handler: memstats:  NVE Configuration             :      1 *       2984
 Aborted (core dumped)
 ```
 3. And if you test it with frr git version a9b4458f6107af926df2c7ba20d0fd873bf6e99e, compile it with `-g` argument, you will see the backtrace which indicate the assert error is in `peek_for_as4_capability` function.
+4. References:
+- https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-36440
