@@ -1,3 +1,19 @@
+# Prefix
+This is to expose CVE-2022-36440。
+
+# NAME OF AFFECTED PRODUCT(S) AND VERSION(S)
+bgpd in FRRouting 8.3.
+
+# PROBLEM TYPE
+## Vulnerability Type
+Reachable Assertion Failure
+## Root Cause
+![image](https://user-images.githubusercontent.com/32606457/225955632-f5e2fc32-ff68-4e94-b4c1-690643c0cfa9.png)
+
+There is no proper length check for bgp open message with extend optioanl parameters, one byte out-of-bound read occurs when setting `extended-optional-parameters` and the extend optional paramaters data in the packet has no sufficient length.
+## Impact
+bgp peer DoS.
+
 # Step to reproduce for frr-v8.3.0:
 1. Using docker pull the latest frr image, and run a container with it. 
 - https://hub.docker.com/layers/frr/frrouting/frr/v8.3.0/images/sha256-4d1343030d2e1f48aa61860b85485a8245cb21ce70fff9187c05011bfaa7b296
@@ -95,5 +111,7 @@ core_handler: memstats:  NVE Configuration             :      1 *       2984
 Aborted (core dumped)
 ```
 3. And if you test it with frr git version a9b4458f6107af926df2c7ba20d0fd873bf6e99e, compile it with `-g` argument, you will see the backtrace which indicate the assert error is in `peek_for_as4_capability` function.
-4. References:
+# Acknowlegement:
+Discovered by spwpun and cjt.
+# References:
 - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-36440
