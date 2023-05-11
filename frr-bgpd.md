@@ -115,3 +115,4 @@ Aborted (core dumped)
 Discovered by spwpun and cjt.
 # References:
 - https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-36440
+- https://github.com/FRRouting/frr/commit/3e46b43e3788f0f87bae56a86b54d412b4710286
